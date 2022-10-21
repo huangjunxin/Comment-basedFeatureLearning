@@ -14,10 +14,10 @@ vectorizer = pickle.load(open('model/vectorizer.pkl', 'rb'))
 currentEssayComments = input('Please enter comments from one essay: ')
 
 # 利用向量化器对 currentEssayComments 进行向量化
-vectorized_input_question = vectorizer.transform([currentEssayComments])
+vectorized_input_comments = vectorizer.transform([currentEssayComments])
 
 # 计算余弦相似度
-res = cosine_similarity(vectorized_input_question, vectorized_comments_matrix)[0]
+res = cosine_similarity(vectorized_input_comments, vectorized_comments_matrix)[0]
 res_index = res.argsort()[-10:].tolist()[::-1]
 
 print('The index of the most similar 10 essays are: ', res_index)
